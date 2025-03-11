@@ -17,14 +17,15 @@ Or on [Ebay](https://www.ebay.com/sch/i.html?_nkw=orbic+rc400l)
 
 ## Setup
 
-*NOTE: We don't currently support automated installs on windows, you will have to follow the manual install instructions below*
+*NOTE: We don't currently support automated installs on Windows; you will have to follow the manual install instructions below.*
 
-1. Download the latest [Rayhunter release bundle](https://github.com/EFForg/rayhunter/releases) and extract it.
-**If you are installing from the cloned github repository please see the development instructions below, running `install-linux.sh` from the git tree will not work.**
-2. Turn on the Orbic device and plug it into your computer using a USB-C Cable.
-2. Run the install script inside the bundle corresponding to your platform (`install-linux.sh`, `install-mac.sh`). The Linux installer has only been tested on the latest version of Ubuntu. If it fails you will need to follow the install steps outlined in **Development** below.
-3. Once finished, Rayhunter should be running! You can verify this by visiting the web UI as described below.
-
+1. Download the latest [Rayhunter release bundle](https://github.com/EFForg/rayhunter/releases) and extract it.  
+   **If you are installing from the cloned GitHub repository, please see the development instructions below. Running `install-linux.sh` from the git tree will not work.**
+2. Turn on the Orbic device and plug it into your computer using a USB-C cable.
+3. Run the install script inside the bundle corresponding to your platform:
+   - **Linux:** Run `install-linux.sh`. Note: The Linux installer has only been tested on the latest version of Ubuntu. If it fails, you will need to follow the install steps outlined in [Development](#development) below.
+   - **macOS:** Run `install-mac.sh`. If you encounter the message `"serial" Not Opened`, disable Gatekeeper using the directions in [Troubleshooting](#troubleshooting) below.
+4. Once finished, Rayhunter should be running! You can verify this by visiting the web UI as described below.
 
 ## Usage
 
@@ -86,6 +87,27 @@ Now you can root your device and install Rayhunter by running `./tools/install-d
 * Run tests using `cargo test_pc`
 
 * push to the device with `./make.sh`
+
+## Troubleshooting
+
+### MacOS "serial" Not Allowed
+
+If you encounter an issue where the "serial" application is not allowed by Gatekeeper, follow these steps to resolve it:
+
+1. **Open System Preferences:**
+   - Go to **System Preferences** > **Privacy & Security** > **General**.
+
+2. **Allow the "serial" Application:**
+   - Look for a message at the bottom of the General tab indicating that the "serial" application was blocked.
+   - Click the **Allow** button next to this message to grant permission.
+
+3. **Re-run the Installer:**
+   - After granting permission, re-run the installer script (`install-mac.sh`).
+
+4. **If the Issue Persists:**
+   - Ensure that you have administrative privileges on your Mac.
+   - Restart your computer and try the above steps again.
+   - For more detailed guidance, consult [Apple's support documentation on Gatekeeper](https://support.apple.com/en-us/HT202491).
 
 ## Documentation
 * Build docs locallly using `RUSTDOCFLAGS="--cfg docsrs" cargo doc --no-deps --all-features  --open`
